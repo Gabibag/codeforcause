@@ -64,30 +64,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         overflow: "hidden",
     },
-    coverImage: {
-        width: 100,
-        height: 150,
-    },
-    bookInfo: {
-        padding: 10,
-        justifyContent: "center",
-    },
-    title: {
-        fontSize: 18,
-        fontWeight: "bold",
-    },
-    author: {
-        fontSize: 14,
-        color: "grey",
-    },
-    pages: {
-        fontSize: 14,
-    },
-    size: {
-        fontSize: 14,
-    },
     booksholder: {
         width: '100%',
+        height: '85%',
+        textAlign: 'center',
     },
     books: {
         width: '33vw',
