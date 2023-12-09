@@ -2,8 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Pressable, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Libary  from "./Pages/Libary";
+import Library  from "./Pages/Library";
 import Home  from "./Pages/Home";
+import Book from "./Pages/Book";
 export default function App() {
   const Stack = createStackNavigator();
   return (
@@ -14,8 +15,12 @@ export default function App() {
         component = {Home}
         />
         <Stack.Screen
-        name = "Libary"
-        component = {Libary}
+        name = "Library"
+        component = {Library}
+        />
+        <Stack.Screen
+        name = "Book"
+        component = {Book}
         />
       </Stack.Navigator>
 

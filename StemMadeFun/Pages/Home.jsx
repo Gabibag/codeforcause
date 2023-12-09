@@ -7,7 +7,7 @@ export default function Home(props) {
         <View style={styles.container}>
         <Text>Home</Text>
         <StatusBar style="auto"/>
-        <Button title = "Libary" onPress={() => {props.navigation.navigate("Libary")}}>Libary</Button>
+        <Button title = "Library" onPress={() => {props.navigation.navigate("Library")}}>Library</Button>
         </View>
     );}
 
