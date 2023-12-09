@@ -12,13 +12,19 @@ app.get('/', (req, res) => {
 app.get('/books/', (req, res) => {
     //read all books in the data directory
     let data = []
-    fs.readdir(__dirname + '/Data/', (err, files) => {
-        if (err) {
-            res.send(err);
+    let files = fs.readdirSync('./Data/');
+    files.forEach(file => {
+        let a = file.split(".")[0].split('-');
+        let o = {
+            title: a[0],
+            author: a[1],
+            pages: a[2],
         }
-        console.log(files);
+        data.push(o);
     });
-})
+    console.log(data);
+    res.json(data);
+    });
 app.get('/File/:Name', (req, res) => {
     res.sendFile(__dirname + '/Data/' + req.params.Name);
 });

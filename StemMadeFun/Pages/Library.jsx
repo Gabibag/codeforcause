@@ -1,49 +1,61 @@
 import { StatusBar } from "expo-status-bar";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, Button, FlatList } from "react-native";
-import * as FileSystem from 'expo-file-system'; 
+import * as FileSystem from 'expo-file-system';
 import * as Network from 'expo-network';
 const api = 'http://10.21.18.55:2525';
-const renderItem = ({ item }) => (
+
+
+function renderItem( item ){
+    console.log("ran" );
+    console.log(item.item.title);
+    return(
     <View style={styles.bookItem}>
-      <Image source={{ uri: item.cover }} style={styles.coverImage} />
-      <View style={styles.bookInfo}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.author}>{item.author}</Text>
-        <Text style={styles.pages}>{item.pages} Pages</Text>
-        <Text style={styles.size}>{item.size}</Text>
-      </View>
-    </View>
-  );
+        <View style={styles.bookInfo}>
+            <Text style={styles.title}>{item.item.title}</Text>
+            <Text style={styles.author}>{item.item.author}</Text>
+            <Text style={styles.pages}>{item.item.pages} Pages</Text>
+            <Text style={styles.size}>{item.item.size}</Text>
+        </View>
+    </View>)
+}
 export default function Library(props) {
-     //make a get request to the api
-    fetch(api + '/books', {
-        method: 'GET',
-    }).then((response) => response.json()).then((responseText) => {
-        console.log("Testing");
-        for(let v of responseText){
-        }
-    })
+    const [data, changedata] = useState([])
+    useEffect(() => {
+        fetch(api + '/books', {
+            method: 'GET',
+        }).then((response) => response.json()).then((responseText) => {
+            changedata(responseText)
+            console.log("Testing");
+            console.log(responseText);
+        })
+    }, [])
+    
+        
+    let list = (<FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.title}
+        contentContainerStyle={styles.container}
+    />)
+    //make a get request to the api
     /*   <Image source = ''style = {styles.home}></Image>
             <View style = {styles.books}></View>
             <Image style = {styles.Video}></Image>
             */
     return (
         <View style={styles.container}>
-        <Text style ={styles.title}>Library</Text>
-        <View style = {styles.booksholder}>
-        <FlatList
-        data={books}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.container}
-        />
+            <Text style={styles.title}>Library</Text>
+            <View style={styles.booksholder}>
+                {list}
+            </View>
+            <View style={styles.bottom}>
+            </View>
+            <StatusBar style="auto" />
         </View>
-         <View style = {styles.bottom}>
-        </View>
-        <StatusBar style="auto"/>
-        </View>
-        
-    );}
+
+    );
+}
 const styles = StyleSheet.create({
     bookItem: {
         marginBottom: 20,
@@ -51,45 +63,45 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFFFFF",
         borderRadius: 10,
         overflow: "hidden",
-      },
-      coverImage: {
+    },
+    coverImage: {
         width: 100,
         height: 150,
-      },
-      bookInfo: {
+    },
+    bookInfo: {
         padding: 10,
         justifyContent: "center",
-      },
-      title: {
+    },
+    title: {
         fontSize: 18,
         fontWeight: "bold",
-      },
-      author: {
+    },
+    author: {
         fontSize: 14,
         color: "grey",
-      },
-      pages: {
+    },
+    pages: {
         fontSize: 14,
-      },
-      size: {
+    },
+    size: {
         fontSize: 14,
-      },    
-    booksholder:{
+    },
+    booksholder: {
         width: '100%',
     },
     books: {
         width: '33vw',
     },
-    home:{
+    home: {
         width: '33vw',
     },
-    Video:{
+    Video: {
         width: '33vw',
 
     },
     bottom: {
         bottom: '0px',
-        position: 'absolute', 
+        position: 'absolute',
         overflowy: 'hidden',
         height: '15%',
         borderBottomLeftRadius: "0px",
@@ -101,7 +113,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         backgroundColor: '#4C566A',
-      },
+    },
     title: {
         fontSize: 50,
         fontWeight: 'bold',
@@ -117,6 +129,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: '#172030',
-      },
+    },
 });
 
