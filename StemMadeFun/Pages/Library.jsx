@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, Button, FlatList } from "react-native";
+import { StyleSheet, Text, View, Pressable, Button, FlatList, Image } from "react-native";
 import * as FileSystem from 'expo-file-system';
 import * as Network from 'expo-network';
 const api = 'http://10.21.18.55:2525';
@@ -11,6 +11,7 @@ function renderItem( item ){
     console.log(item.item.title);
     return(
     <View style={styles.bookItem}>
+        <Image source={{uri: api + '/File/Image/' + item.item.title + '.jpg'}} style={styles.booksimage}></Image>
         <View style={styles.bookInfo}>
             <Text style={styles.title}>{item.item.title}</Text>
             <Text style={styles.author}>{item.item.author}</Text>
@@ -57,14 +58,25 @@ export default function Library(props) {
     );
 }
 const styles = StyleSheet.create({
+    booksimage:{
+        width: 100,
+        height: 100,
+
+    },
+    bookInfo: {
+        padding: 10,
+        flex: 1,
+    },
     bookItem: {
         marginBottom: 20,
         flexDirection: "row",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#4C566A",
         borderRadius: 10,
         overflow: "hidden",
+        alignItems: "center",
     },
     booksholder: {
+        paddingBottom: '25%',
         width: '100%',
         height: '85%',
         textAlign: 'center',
@@ -81,7 +93,7 @@ const styles = StyleSheet.create({
     },
     bottom: {
         bottom: '0px',
-        position: 'absolute',
+        position: 'fixed',
         overflowy: 'hidden',
         height: '15%',
         borderBottomLeftRadius: "0px",
