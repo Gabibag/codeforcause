@@ -10,7 +10,7 @@ import {
   Linking,
 } from "react-native";
 
-const bookCoverImage = require("../FileServer/Data/Image/One.jpg"); // Update the path if necessary
+const bookCoverImage = require("../FileServer/Data/Image/sciencebook.webp"); // Update the path if necessary
 const websiteImage = require("../FileServer/Data/Image/website.png");
 
 const Home = (props) => {
@@ -23,7 +23,7 @@ const Home = (props) => {
   };
 
   const lastReadBook = {
-    title: "The Practice of Statistics",
+    title: "Science and Beyond",
     author: "Daren S. Starnes",
     pages: "858",
     size: "45MB",
@@ -35,18 +35,16 @@ const Home = (props) => {
       <ScrollView style={styles.scroller}>
         <Text style={styles.header}>Home</Text>
 
-        <View style={styles.contentContainer}>
-          <TouchableOpacity
-            onPress={() =>
-              Linking.openURL("https://www.stemmadefun.com/subjects")
-            }
-            style={styles.box}
-          >
-            <Text style={styles.subHeader}>Visit Our Website!</Text>
-            <Image source={{ uri: websiteImage }} style={styles.website} />
-            <Text style={styles.title}>{lastReadBook.title}</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL("https://www.stemmadefun.com/subjects")
+          }
+          style={styles.box}
+        >
+          <Text style={styles.subHeader}>Visit Our Website!</Text>
+          <Image source={{ uri: websiteImage }} style={styles.website} />
+          <Text style={styles.title}>{lastReadBook.title}</Text>
+        </TouchableOpacity>
         <View style={styles.buttonContainer}>
           <Button
             title="Go to Library"
@@ -94,7 +92,6 @@ const styles = StyleSheet.create({
     height: 150,
   },
   scroller: {
-    paddingBottom: "25%",
     width: "92%",
     height: "85%",
     marginLeft: "4%",
@@ -112,10 +109,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     marginBottom: 20,
+    marginTop: 20,
   },
   contentContainer: {
     flex: 1,
     paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
   box: {
     backgroundColor: "rgba(108, 117, 125, 0.7)", // Translucent gray box
