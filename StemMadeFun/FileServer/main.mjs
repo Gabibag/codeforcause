@@ -26,7 +26,10 @@ app.get('/', (req, res) => {
 });
 app.post('/AI/Question', (req, res) => {
     console.log(req.body);
-    let params = {};
+    let prompt = "You are a teacher answering a students question about the book " + req.body.book + ", answer the students question: " + req.body.question;
+    let params = {
+        prompt: prompt
+    };
     if(req.body.book == lastbook) {
         params = {
             parentMessageId: convID,
@@ -35,10 +38,8 @@ app.post('/AI/Question', (req, res) => {
     console.log(req.body);
     let question = req.body.question;
     console.log(question);
-    let prompt = "You are a teacher answering a students question about the book " + req.body.book + ", answer the students question: " + req.body.question;
-    api.sendMessage(question, params).then((response) => {
-        console.log(response);
-        convID = response.conversationId;
+    api.sendMessage(prompt, params).then((response) => {
+        convID = response.parentMessageId;
         res.json(response);
     });
     lastbook = req.body.book;
