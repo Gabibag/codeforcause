@@ -3,3 +3,4 @@ node_modules/.expo
 node_modules/%ProgramData%
 node_modules/node_modules
 StemMadeFun/%ProgramData%/Microsoft/Windows/UUS/State/_active.uusver
+.DS_Store
