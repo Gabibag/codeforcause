@@ -6,6 +6,8 @@ import { } from "@expo-google-fonts/red-hat-display";
 import Library from "./Pages/Library";
 import Home from "./Pages/Home";
 import ReadBook from "./Pages/ReadBook";
+import { LinearGradient } from 'expo-linear-gradient';
+
 import {
   useFonts,
   RedHatDisplay_300Light,

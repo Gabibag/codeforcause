@@ -11,10 +11,12 @@ import {
 } from "react-native";
 import * as FileSystem from "expo-file-system";
 import * as Network from "expo-network";
+import { LinearGradient } from "expo-linear-gradient";
+
 const api = "http://127.0.0.1:2525";
 let nav = null;
 
-export function renderItem(item) {
+function renderItem(item) {
   console.log("ran");
   console.log(item.item.title);
   return (
@@ -66,6 +68,34 @@ export default function Library(props) {
             */
   return (
     <View style={styles.container}>
+      <Text style={styles.mainHeading}>Library</Text>
+      <View style={styles.booksholder}>{list}</View>
+      <LinearGradient colors={["#4C566A", "#2F3541"]} style={styles.navBar}>
+        <Image
+          source={{
+            uri: "https://drive.google.com/uc?export=download&id=1LkxU8GOt_hAzKyqa5qJSObhSdpe6EvBz",
+          }}
+          style={styles.nav1}
+        ></Image>
+        <Image
+          source={{
+            uri: "https://drive.google.com/uc?export=download&id=1JkkuGjJC4PuG9xLju_yJwckmzLqXEd5-",
+          }}
+          style={styles.nav2}
+        ></Image>
+        <Image
+          source={{
+            uri: "https://drive.google.com/uc?export=download&id=1OTC__Y92Rq8LGlgSFeJHDcktWT9YkiQE",
+          }}
+          style={styles.nav3}
+        ></Image>
+      </LinearGradient>
+
+      <StatusBar style="auto" />
+    </View>
+  );
+  return (
+    <View style={styles.container}>
       <Text style={styles.title}>Library</Text>
       <View style={styles.booksholder}>{list}</View>
       <View style={styles.bottom}></View>
@@ -74,9 +104,49 @@ export default function Library(props) {
   );
 }
 const styles = StyleSheet.create({
+  nav1: {
+    width: "45px",
+    height: "45px",
+    marginTop: "6%",
+    marginLeft: "5%",
+  },
+
+  imageCover: {
+    //this should be overlayed over the image at the bottom, and should be like a black cover that can hold text
+    width: "100%",
+
+    height: "100%",
+    backgroundColor: "#000000",
+    opacity: 0.5,
+    position: "absolute",
+    borderRadius: 14,
+  },
+  mainHeading: {
+    fontSize: 50,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "left",
+    padding: "5%",
+    width: "100%",
+    fontFamily: "RedHatDisplay_600SemiBold",
+  },
+  nav2: {
+    width: "50px",
+    height: "45px",
+    marginTop: "6%",
+    marginLeft: "28%",
+  },
+  nav3: {
+    width: "66px",
+    height: "45px",
+    marginTop: "6%",
+    marginLeft: "23%",
+  },
   booksimage: {
-    width: 100,
-    height: 100,
+    width: "30%",
+    height: "90%",
+    marginLeft: "3%",
+    borderRadius: 14,
   },
   bookInfo: {
     padding: 10,
@@ -115,11 +185,11 @@ const styles = StyleSheet.create({
     width: "33vw",
     fontFamily: "RedHatDisplay_600SemiBold",
   },
-  bottom: {
+  navBar: {
     bottom: "0px",
     position: "fixed",
     overflowy: "hidden",
-    height: "15%",
+    height: "10%",
     borderBottomLeftRadius: "0px",
     borderBottomRightRadius: "0px",
     borderTopLeftRadius: "40px",
@@ -128,16 +198,22 @@ const styles = StyleSheet.create({
     alignContent: "center",
     flexDirection: "row",
     width: "100%",
-    backgroundColor: "#4C566A",
   },
   title: {
     fontSize: 50,
     fontWeight: "bold",
     color: "white",
     textAlign: "left",
-    padding: "5%",
+    padding: "0% 5% 0% 1%",
     width: "100%",
     fontFamily: "RedHatDisplay_600SemiBold",
+  },
+  author: {
+    fontSize: 20,
+    fontWeight: "light",
+    color: "white",
+    textAlign: "left",
+    fontFamily: "RedHatDisplay_300Light",
   },
   container: {
     position: "absolute",
