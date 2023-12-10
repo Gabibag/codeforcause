@@ -51,6 +51,21 @@ const Video = () => {
           </View>
         ))}
       </ScrollView>
+      <View style={styles.container}>
+            <Text style={styles.mainHeading}>Library</Text>
+            <View style={styles.booksholder}>
+                {list}
+            </View>
+            <LinearGradient 
+                colors={['#4C566A', '#2F3541']}
+            style={styles.navBar}>
+                <Image source={{uri: "https://drive.google.com/uc?export=download&id=1LkxU8GOt_hAzKyqa5qJSObhSdpe6EvBz"}} style={styles.nav1}></Image>    
+                <Image source={{uri: "https://drive.google.com/uc?export=download&id=1JkkuGjJC4PuG9xLju_yJwckmzLqXEd5-"}} style={styles.nav2}></Image>    
+                <Image source={{uri: "https://drive.google.com/uc?export=download&id=1OTC__Y92Rq8LGlgSFeJHDcktWT9YkiQE"}} style={styles.nav3}></Image>    
+            </LinearGradient>
+            
+            <StatusBar style="auto"/>
+        </View>
     </View>
   );
 };
@@ -109,7 +124,38 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "#172030",
-  },
+  },nav1:{
+    width: "45px",
+    height: "45px",
+    marginTop: "6%",
+    marginLeft: "5%"
+
+},nav2:{
+  width: "50px",
+  height: "45px",
+  marginTop: "6%",
+  marginLeft: "28%"
+},
+nav3:{
+  width: "66px",
+  height: "45px",
+  marginTop: "6%",
+  marginLeft: "23%"
+},
+navBar: {
+  bottom: '0px',
+  position: 'fixed',
+  overflowy: 'hidden',
+  height: '10%',
+  borderBottomLeftRadius: "0px",
+  borderBottomRightRadius: "0px",
+  borderTopLeftRadius: "40px",
+  borderTopRightRadius: "40px",
+  flex: 1,
+  alignContent: 'center',
+  flexDirection: 'row',
+  width: '100%',
+},
   // ... your other styles remain unchanged
 });
 
