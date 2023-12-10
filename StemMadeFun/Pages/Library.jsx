@@ -14,7 +14,7 @@ import * as Network from "expo-network";
 const api = "http://127.0.0.1:2525";
 let nav = null;
 
-function renderItem(item) {
+export function renderItem(item) {
   console.log("ran");
   console.log(item.item.title);
   return (
