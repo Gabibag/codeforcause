@@ -27,61 +27,58 @@ const videoData = [
 
 const Video = () => {
   return (
-    <ScrollView style={styles.scrollContainer}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <Text style={styles.title}>Videos</Text>
+      <ScrollView style={styles.videoHolder}>
         {videoData.map((video, index) => (
-          <View key={index} style={styles.videoBlock}>
-            <Text style={styles.title}>{video.title}</Text>
-            <Text style={styles.description}>{video.description}</Text>
-            <iframe
-              style={styles.video}
-              src={video.src}
-              title={video.title}
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+          <View key={index} style={styles.videoItem}>
+            <Image
+              source={{ uri: video.thumbnail }} // You'll need to add a thumbnail property to your videoData objects
+              style={styles.videoImage}
+            />
+            <View style={styles.videoInfo}>
+              <Text style={styles.videoTitle}>{video.title}</Text>
+              <Text style={styles.description}>{video.description}</Text>
+              <iframe
+                style={styles.video}
+                src={video.src}
+                title={video.title}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              />
+            </View>
           </View>
         ))}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollContainer: {
-    flex: 1,
-    backgroundColor: "#262626", // Dark background for the whole scroll view
+  videoHolder: {
+    paddingBottom: "25%",
+    width: "92%",
+    height: "85%",
+    marginLeft: "4%",
+    textAlign: "center",
   },
-  container: {
-    flex: 1,
-    paddingVertical: 20,
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: "#FFF",
+  videoItem: {
     marginBottom: 20,
-    alignSelf: "center",
+    flexDirection: "row",
+    backgroundColor: "#4C566A",
+    borderRadius: 10,
+    overflow: "hidden",
+    alignItems: "center",
+    borderColor: "#FFFFFF54",
+    borderWidth: 2,
+    padding: 10,
   },
-  videoBlock: {
-    backgroundColor: "#333333", // Dark theme for each video block
-    borderRadius: 12,
-    padding: 15,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    alignItems: "center", // Center align items within the card
+  videoInfo: {
+    flex: 1,
+    paddingHorizontal: 10,
   },
-  videoContainer: {
-    width: "100%",
-    marginBottom: 10,
-  },
-  video: {
-    aspectRatio: 16 / 9,
-    width: "100%",
-    borderWidth: 0, // Removes border on iframes
-  },
-  title: {
+  videoTitle: {
     fontSize: 18,
     fontWeight: "bold",
     color: "#FFF",
@@ -92,5 +89,28 @@ const styles = StyleSheet.create({
     color: "#CCC",
     marginBottom: 15,
   },
+  video: {
+    aspectRatio: 16 / 9,
+    width: "100%",
+    borderWidth: 0,
+  },
+  title: {
+    fontSize: 50,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "left",
+    padding: "5%",
+    width: "100%",
+  },
+  container: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#172030",
+  },
+  // ... your other styles remain unchanged
 });
+
 export default Video;
