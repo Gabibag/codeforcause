@@ -7,6 +7,7 @@ import {
   Button,
   TouchableOpacity,
   ScrollView,
+  Linking,
 } from "react-native";
 
 const bookCoverImage = require("../FileServer/Data/Image/One.jpg"); // Update the path if necessary
@@ -37,7 +38,7 @@ const Home = (props) => {
         <View style={styles.contentContainer}>
           <TouchableOpacity
             onPress={() =>
-              props.navigation.navigate("https://www.stemmadefun.com/subjects")
+              Linking.openURL("https://www.stemmadefun.com/subjects")
             }
             style={styles.box}
           >
