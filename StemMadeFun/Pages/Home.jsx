@@ -1,10 +1,10 @@
 import React from "react";
+import { LinearGradient } from "expo-linear-gradient";
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  Button,
   TouchableOpacity,
   ScrollView,
   Linking,
@@ -45,18 +45,6 @@ const Home = (props) => {
           <Image source={{ uri: websiteImage }} style={styles.website} />
           <Text style={styles.title}>{lastReadBook.title}</Text>
         </TouchableOpacity>
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Go to Library"
-            color="#6c757d"
-            onPress={() => props.navigation.navigate("Library")}
-          />
-          <Button
-            title="Watch Videos"
-            color="#6c757d"
-            onPress={() => props.navigation.navigate("Video")}
-          />
-        </View>
         <View style={styles.contentContainer}>
           <TouchableOpacity
             onPress={() => props.navigation.navigate("Library")}
@@ -78,11 +66,74 @@ const Home = (props) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      <LinearGradient colors={["#4C566A", "#2F3541"]} style={styles.navBar}>
+      <TouchableOpacity onPress={() => props.navigation.navigate("Library")} style={styles.navStyle1}>
+        <Image
+          source={{
+            uri: "https://drive.google.com/uc?export=download&id=1LkxU8GOt_hAzKyqa5qJSObhSdpe6EvBz",
+          }}
+          style={styles.nav1}
+        ></Image>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.navigate("Library")} style={styles.navStyle2}>
+          <Image
+            source={{
+              uri: "https://drive.google.com/uc?export=download&id=1JkkuGjJC4PuG9xLju_yJwckmzLqXEd5-",
+            }}
+            
+            style={styles.nav2}
+          ></Image>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.navigate("Video")} style={styles.navStyle3}>
+        <Image
+          source={{
+            uri: "https://drive.google.com/uc?export=download&id=1OTC__Y92Rq8LGlgSFeJHDcktWT9YkiQE",
+          }}
+          style={styles.nav3} 
+        ></Image>
+        </TouchableOpacity>
+      </LinearGradient>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  navBar: {
+    bottom: '-2px',
+    position: 'fixed',
+    overflowy: 'hidden',
+    height: '10%',
+    borderBottomLeftRadius: "0px",
+    borderBottomRightRadius: "0px",
+    borderTopLeftRadius: "40px",
+    borderTopRightRadius: "40px",
+    flex: 1,
+    alignContent: 'center',
+    flexDirection: 'row',
+    width: '100%',
+},nav1:{
+  width: "45px",
+  height: "45px",
+
+}, navStyle1:{
+  marginTop: "6%",
+  marginLeft: "5%"
+},
+nav2:{
+  width: "50px",
+  height: "45px",
+},
+navStyle2:{
+  marginTop: "6%",
+  marginLeft: "28%"
+},
+nav3:{
+  width: "66px",
+  height: "45px",
+},navStyle3:{
+  marginTop: "6%",
+  marginLeft: "23%"
+},
   container: {
     flex: 1,
     backgroundColor: "#172030",

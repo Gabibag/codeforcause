@@ -5,13 +5,14 @@ import {
   Text,
   View,
   Pressable,
-  Button,
+  TouchableOpacity,
   FlatList,
   Image,
 } from "react-native";
 import * as FileSystem from "expo-file-system";
 import * as Network from "expo-network";
-import { LinearGradient } from "expo-linear-gradient";
+import {  LinearGradient } from "expo-linear-gradient";
+
 
 const api = "http://127.0.0.1:2525";
 let nav = null;
@@ -70,46 +71,42 @@ export default function Library(props) {
     <View style={styles.container}>
       <Text style={styles.mainHeading}>Library</Text>
       <View style={styles.booksholder}>{list}</View>
+      
+
+      <StatusBar style="auto" />
       <LinearGradient colors={["#4C566A", "#2F3541"]} style={styles.navBar}>
+      <TouchableOpacity onPress={() => props.navigation.navigate("Home")} style={styles.navStyle1}>
         <Image
           source={{
             uri: "https://drive.google.com/uc?export=download&id=1LkxU8GOt_hAzKyqa5qJSObhSdpe6EvBz",
           }}
           style={styles.nav1}
         ></Image>
-        <Image
-          source={{
-            uri: "https://drive.google.com/uc?export=download&id=1JkkuGjJC4PuG9xLju_yJwckmzLqXEd5-",
-          }}
-          style={styles.nav2}
-        ></Image>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.navigate("Library")} style={styles.navStyle2}>
+          <Image
+            source={{
+              uri: "https://drive.google.com/uc?export=download&id=1JkkuGjJC4PuG9xLju_yJwckmzLqXEd5-",
+            }}
+            
+            style={styles.nav2}
+          ></Image>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.navigate("Video")} style={styles.navStyle3}>
         <Image
           source={{
             uri: "https://drive.google.com/uc?export=download&id=1OTC__Y92Rq8LGlgSFeJHDcktWT9YkiQE",
           }}
-          style={styles.nav3}
+          style={styles.nav3} 
         ></Image>
+        </TouchableOpacity>
       </LinearGradient>
-
-      <StatusBar style="auto" />
     </View>
-  );
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Library</Text>
-      <View style={styles.booksholder}>{list}</View>
-      <View style={styles.bottom}></View>
-      <StatusBar style="auto" />
-    </View>
+    
+    
   );
 }
 const styles = StyleSheet.create({
-  nav1: {
-    width: "45px",
-    height: "45px",
-    marginTop: "6%",
-    marginLeft: "5%",
-  },
 
   imageCover: {
     //this should be overlayed over the image at the bottom, and should be like a black cover that can hold text
@@ -129,18 +126,6 @@ const styles = StyleSheet.create({
     padding: "5%",
     width: "100%",
     fontFamily: "RedHatDisplay_600SemiBold",
-  },
-  nav2: {
-    width: "50px",
-    height: "45px",
-    marginTop: "6%",
-    marginLeft: "28%",
-  },
-  nav3: {
-    width: "66px",
-    height: "45px",
-    marginTop: "6%",
-    marginLeft: "23%",
   },
   booksimage: {
     width: "30%",
@@ -185,20 +170,6 @@ const styles = StyleSheet.create({
     width: "33vw",
     fontFamily: "RedHatDisplay_600SemiBold",
   },
-  navBar: {
-    bottom: "0px",
-    position: "fixed",
-    overflowy: "hidden",
-    height: "10%",
-    borderBottomLeftRadius: "0px",
-    borderBottomRightRadius: "0px",
-    borderTopLeftRadius: "40px",
-    borderTopRightRadius: "40px",
-    flex: 1,
-    alignContent: "center",
-    flexDirection: "row",
-    width: "100%",
-  },
   title: {
     fontSize: 50,
     fontWeight: "bold",
@@ -224,4 +195,40 @@ const styles = StyleSheet.create({
     fontFamily: "RedHatDisplay_600SemiBold",
     backgroundColor: "#172030",
   },
+  navBar: {
+    bottom: '-2px',
+    position: 'fixed',
+    overflowy: 'hidden',
+    height: '10%',
+    borderBottomLeftRadius: "0px",
+    borderBottomRightRadius: "0px",
+    borderTopLeftRadius: "40px",
+    borderTopRightRadius: "40px",
+    flex: 1,
+    alignContent: 'center',
+    flexDirection: 'row',
+    width: '100%',
+},nav1:{
+  width: "45px",
+  height: "45px",
+
+}, navStyle1:{
+  marginTop: "6%",
+  marginLeft: "5%"
+},
+nav2:{
+  width: "50px",
+  height: "45px",
+},
+navStyle2:{
+  marginTop: "6%",
+  marginLeft: "28%"
+},
+nav3:{
+  width: "66px",
+  height: "45px",
+},navStyle3:{
+  marginTop: "6%",
+  marginLeft: "23%"
+},
 });
