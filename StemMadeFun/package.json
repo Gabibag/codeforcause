@@ -9,12 +9,17 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@bildau/rn-pdf-reader": "^4.2.7",
+    "@expo-google-fonts/red-hat-display": "^0.2.3",
     "@expo/webpack-config": "^19.0.0",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.20",
     "expo": "~49.0.15",
+    "expo-app-loading": "^2.1.1",
     "expo-constants": "~14.4.2",
     "expo-file-system": "~15.4.5",
+    "expo-font": "~11.4.0",
+    "expo-google-fonts": "^0.0.0",
     "expo-linking": "~5.0.2",
     "expo-network": "~5.4.0",
     "expo-router": "^2.0.0",

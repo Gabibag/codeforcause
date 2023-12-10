@@ -1,16 +1,20 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, Button, FlatList } from "react-native";
+import { StyleSheet, Text, View, Pressable, Button, FlatList, Image } from "react-native";
 import * as FileSystem from 'expo-file-system';
 import * as Network from 'expo-network';
-const api = 'http://10.21.18.55:2525';
+const api = 'http://127.0.0.1:2525';
+let nav = null;
 
-
-function renderItem( item ){
+function renderItem(item){
     console.log("ran" );
     console.log(item.item.title);
     return(
-    <View style={styles.bookItem}>
+    <View style={styles.bookItem} onStartShouldSetResponder = { () => {
+        console.log("ran view t")
+        nav.navigate("ReadBook", {book: item.item.title})
+    }}>
+        <Image source={{uri: api + '/File/Image/' + item.item.title + '.jpg'}} style={styles.booksimage}></Image>
         <View style={styles.bookInfo}>
             <Text style={styles.title}>{item.item.title}</Text>
             <Text style={styles.author}>{item.item.author}</Text>
@@ -20,14 +24,13 @@ function renderItem( item ){
     </View>)
 }
 export default function Library(props) {
+    nav = props.navigation;
     const [data, changedata] = useState([])
     useEffect(() => {
         fetch(api + '/books', {
             method: 'GET',
         }).then((response) => response.json()).then((responseText) => {
-            changedata(responseText)
-            console.log("Testing");
-            console.log(responseText);
+            changedata(responseText);
         })
     }, [])
     
@@ -57,51 +60,50 @@ export default function Library(props) {
     );
 }
 const styles = StyleSheet.create({
-    bookItem: {
-        marginBottom: 20,
-        flexDirection: "row",
-        backgroundColor: "#FFFFFF",
-        borderRadius: 10,
-        overflow: "hidden",
-    },
-    coverImage: {
+    booksimage:{
         width: 100,
-        height: 150,
+        height: 100,
     },
     bookInfo: {
         padding: 10,
-        justifyContent: "center",
+        flex: 1,
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
-    title: {
-        fontSize: 18,
-        fontWeight: "bold",
-    },
-    author: {
-        fontSize: 14,
-        color: "grey",
-    },
-    pages: {
-        fontSize: 14,
-    },
-    size: {
-        fontSize: 14,
+    bookItem: {
+        marginBottom: 20,
+        flexDirection: "row",
+        backgroundColor: "#4C566A",
+        borderRadius: 10,
+        overflow: "hidden",
+        alignItems: "center",
+        fontFamily: 'RedHatDisplay_600SemiBold',
+        borderColor: '#FFFFFF54',
+        borderRadius: '23px',
+        borderWidth: '2px',
     },
     booksholder: {
-        width: '100%',
+        paddingBottom: '25%',
+        width: '92%',
+        height: '85%',
+        marginLeft: '4%',
+        textAlign: 'center',
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
     books: {
         width: '33vw',
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
     home: {
         width: '33vw',
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
     Video: {
         width: '33vw',
-
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
     bottom: {
         bottom: '0px',
-        position: 'absolute',
+        position: 'fixed',
         overflowy: 'hidden',
         height: '15%',
         borderBottomLeftRadius: "0px",
@@ -121,6 +123,8 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         padding: '5%',
         width: '100%',
+        fontFamily: 'RedHatDisplay_600SemiBold'
+
     },
     container: {
         position: 'absolute',
@@ -128,6 +132,7 @@ const styles = StyleSheet.create({
         left: '0px',
         width: '100%',
         height: '100%',
+        fontFamily: 'RedHatDisplay_600SemiBold',
         backgroundColor: '#172030',
     },
 });
