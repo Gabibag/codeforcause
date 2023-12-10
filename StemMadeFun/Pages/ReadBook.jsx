@@ -6,7 +6,8 @@ export default function ReadBook(props) {
     let book =  api + '/Books/' + props.route.params.book;
     console.log(book);
     return <View style = {styles.holder}><iframe style = {styles.frame} src= {book} title="Book">
-    </iframe>
+        </iframe>
+        
     </View>
 }
 const styles = StyleSheet.create({

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, Button, FlatList, Image } from "react-native";
 import * as FileSystem from 'expo-file-system';
 import * as Network from 'expo-network';
-const api = 'http://10.21.18.55:2525';
+const api = 'http://127.0.0.1:2525';
 let nav = null;
 
 function renderItem(item){
