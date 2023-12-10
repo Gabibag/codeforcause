@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, Button, FlatList, Image } from "react-native";
 import * as FileSystem from 'expo-file-system';
 import * as Network from 'expo-network';
-const api = 'http://10.21.18.55:2525';
+
+
+const api = 'http://10.21.18.49:2525';
 
 
 function renderItem( item ){
@@ -61,11 +63,11 @@ const styles = StyleSheet.create({
     booksimage:{
         width: 100,
         height: 100,
-
     },
     bookInfo: {
         padding: 10,
         flex: 1,
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
     bookItem: {
         marginBottom: 20,
@@ -74,22 +76,30 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         overflow: "hidden",
         alignItems: "center",
+        fontFamily: 'RedHatDisplay_600SemiBold',
+        borderColor: '#FFFFFF54',
+        borderRadius: '23px',
+        borderWidth: '2px',
     },
     booksholder: {
         paddingBottom: '25%',
-        width: '100%',
+        width: '92%',
         height: '85%',
+        marginLeft: '4%',
         textAlign: 'center',
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
     books: {
         width: '33vw',
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
     home: {
         width: '33vw',
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
     Video: {
         width: '33vw',
-
+        fontFamily: 'RedHatDisplay_600SemiBold'
     },
     bottom: {
         bottom: '0px',
@@ -113,6 +123,8 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         padding: '5%',
         width: '100%',
+        fontFamily: 'RedHatDisplay_600SemiBold'
+
     },
     container: {
         position: 'absolute',
@@ -120,6 +132,7 @@ const styles = StyleSheet.create({
         left: '0px',
         width: '100%',
         height: '100%',
+        fontFamily: 'RedHatDisplay_600SemiBold',
         backgroundColor: '#172030',
     },
 });
