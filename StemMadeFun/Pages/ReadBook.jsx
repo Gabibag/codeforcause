@@ -35,6 +35,9 @@ export default function ReadBook(props) {
                 }).then((response) => response.json()).then((responseText) => {
                     console.log(responseText);
                     let response = responseText.text;
+                    if(response.length > 275){
+                        response = response.substring(0,275);
+                    }
                     changeBottomPosition("35")
                     onChangeText(" ");
                     changeResponse(response);
@@ -59,7 +62,7 @@ export default function ReadBook(props) {
     return <View style={styles.holder}><iframe style={styles.frame} src={book} title="Book">
     </iframe>
         {bottom}
-        <Text style={{position: 'fixed', bottom: bottomPosition - 20 + "%", left: '3%', color: 'white', fontSize: 20, textAlign: "center" }}>{response}</Text>
+        <Text style={{position: 'fixed', height: "30", bottom: bottomPosition - 25 + "%", left: '0%', color: 'white', backgroundColor: 'black',  fontSize: 20, textAlign: "center" }}>{response}</Text>
     </View>
 }
 let styles = StyleSheet.create({

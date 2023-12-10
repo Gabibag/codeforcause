@@ -126,6 +126,13 @@ const styles = StyleSheet.create({
     padding: "5%",
     width: "100%",
     fontFamily: "RedHatDisplay_600SemiBold",
+  },pages:{
+    fontSize: 20,
+    fontWeight: "light",
+    color: "white",
+    textAlign: "left",
+    fontFamily: "RedHatDisplay_300Light",
+
   },
   booksimage: {
     width: "30%",

@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     flexDirection: 'row',
     width: '100%',
+    fontFamily: "RedHatDisplay_600SemiBold",
 },nav1:{
   width: "45px",
   height: "45px",
@@ -149,11 +150,11 @@ nav3:{
     textAlign: "center",
   },
   header: {
-    fontSize: 24,
+    fontSize: 50,
     fontWeight: "bold",
     color: "white",
     margin: 20,
-    textAlign: "center",
+    textAlign: "left",
     marginTop: 10,
   },
   buttonContainer: {
@@ -167,6 +168,7 @@ nav3:{
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 20,
+    width: "100%",
   },
   box: {
     backgroundColor: "rgba(108, 117, 125, 0.7)", // Translucent gray box
@@ -187,6 +189,7 @@ nav3:{
     color: "#FFF",
     marginBottom: 10,
     marginTop: 20,
+    fontFamily: "RedHatDisplay_300Light",
   },
   bookCover: {
     width: 150,
