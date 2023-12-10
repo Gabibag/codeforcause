@@ -4,13 +4,16 @@ import { StyleSheet, Text, View, Pressable, Button, FlatList, Image } from "reac
 import * as FileSystem from 'expo-file-system';
 import * as Network from 'expo-network';
 const api = 'http://10.21.18.55:2525';
+let nav = null;
 
-
-function renderItem( item ){
+function renderItem(item){
     console.log("ran" );
     console.log(item.item.title);
     return(
-    <View style={styles.bookItem}>
+    <View style={styles.bookItem} onStartShouldSetResponder = { () => {
+        console.log("ran view t")
+        nav.navigate("ReadBook", {book: item.item.title})
+    }}>
         <Image source={{uri: api + '/File/Image/' + item.item.title + '.jpg'}} style={styles.booksimage}></Image>
         <View style={styles.bookInfo}>
             <Text style={styles.title}>{item.item.title}</Text>
@@ -21,14 +24,13 @@ function renderItem( item ){
     </View>)
 }
 export default function Library(props) {
+    nav = props.navigation;
     const [data, changedata] = useState([])
     useEffect(() => {
         fetch(api + '/books', {
             method: 'GET',
         }).then((response) => response.json()).then((responseText) => {
-            changedata(responseText)
-            console.log("Testing");
-            console.log(responseText);
+            changedata(responseText);
         })
     }, [])
     

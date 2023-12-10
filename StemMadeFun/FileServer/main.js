@@ -9,6 +9,22 @@ const PORT = 2525;
 app.get('/', (req, res) => {
     res.send('TEST run');
 });
+app.get('/Books/:Name', (req, res) => {
+    let files = fs.readdirSync('./Data/');
+    let name = req.params.Name;
+    let found = false;
+    files.forEach(file => {
+        if(file.split(".")[1] != "pdf") return;
+        let a = file.split(".")[0].split('-');
+        if(a[0] == name && !found) {
+            res.sendFile(__dirname + '/Data/' + file);
+            found = true;
+            return;
+        }
+    });
+    if(!found) res.send('404');
+});
+
 app.get('/books/', (req, res) => {
     //read all books in the data directory
     let data = []

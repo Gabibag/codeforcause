@@ -4,7 +4,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Library  from "./Pages/Library";
 import Home  from "./Pages/Home";
-import Book from "./Pages/Book";
 import ReadBook from "./Pages/ReadBook";
 export default function App() {
   const Stack = createStackNavigator();
@@ -20,14 +19,11 @@ export default function App() {
         component = {Library}
         />
         <Stack.Screen
-        name = "Book"
-        component = {Book}
+         name = "ReadBook"
+          component = {ReadBook}
         />
       </Stack.Navigator>
-      <Stack.Screen>
-        name = "ReadBook"
-        component = {ReadBook}
-      </Stack.Screen>
+      
     </NavigationContainer>
   );
 }
