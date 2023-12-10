@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, Pressable, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { } from "@expo-google-fonts/red-hat-display";
-import Library  from "./Pages/Library";
-import Home  from "./Pages/Home";
+import Library from "./Pages/Library";
+import Home from "./Pages/Home";
 import ReadBook from "./Pages/ReadBook";
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -28,6 +28,7 @@ import {
 import AppLoading from 'expo-app-loading';
 
 
+import Video from "./Pages/Video";
 export default function App() {
   let [fontsLoaded] = useFonts({
     RedHatDisplay_300Light,
@@ -50,12 +51,14 @@ export default function App() {
         name = "Library"
         component = {Library}
         />
-        <Stack.Screen
+         <Stack.Screen
          name = "ReadBook"
           component = {ReadBook}
         />
+                <Stack.Screen name="Video" component={Video} />
+
       </Stack.Navigator>
-      
+
     </NavigationContainer>
   );
 }
