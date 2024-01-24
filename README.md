@@ -5,14 +5,15 @@ This repository hosts a react native app for [Stem Made Fun](https://www.stemmad
 ## App Images
 
 ### Home
-![Home](https://github.com/Gabibag/codeforcause/assets/97263038/95c49434-361b-4f2e-807d-0740c2d2a47d)
+![Home](https://github.com/Gabibag/codeforcause/assets/97263038/beea2a2f-2103-47eb-abe1-9df9990cb99d)
 
 ### Library
-![Library](https://github.com/Gabibag/codeforcause/assets/97263038/7c57760f-a60a-4629-9ef0-b5793dce3ba4)
+![Library](https://github.com/Gabibag/codeforcause/assets/97263038/f9ccf212-1c30-46ce-8733-6a04a1c7af6a)
 
 ### Reading Page
-![Reading](https://github.com/Gabibag/codeforcause/assets/97263038/29950a96-1af0-458f-aa74-08b99fcfc6b5)
+![Reading](https://github.com/Gabibag/codeforcause/assets/97263038/8e99e929-1e9c-467f-98f4-02ac146ec805)
 
 ### Reading and Keyboard
-![Reading and Keyboard](https://github.com/Gabibag/codeforcause/assets/97263038/9fe73a76-dc6a-4b7b-a171-bb54d09b2ba8)
+![Reading and Keyboard](https://github.com/Gabibag/codeforcause/assets/97263038/47832220-a330-45c5-8c4c-5255997aa619)
+
 
